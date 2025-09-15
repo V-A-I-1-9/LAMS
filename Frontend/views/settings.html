@@ -1,0 +1,43 @@
+<div class="view-container">
+    <h2>Settings</h2>
+
+    <div class="settings-section">
+        <h3>Data Management</h3>
+        <p>Save a copy of all your data to a safe location (like a USB drive).</p>
+        <button id="backupBtn" class="import-button">Backup Data</button>
+        <p>Restore your data from a previously saved backup file. The application will restart.</p>
+        <button id="restoreBtn" class="logout-button">Restore from Backup</button>
+    </div>
+
+    <hr>
+
+    <div class="settings-section">
+        <h3>Security</h3>
+        <p>Change the password for the 'attender' account.</p>
+        <div class="form-container-vertical">
+            <input type="password" id="currentPassword" placeholder="Current Password">
+            <input type="password" id="newPassword" placeholder="New Password">
+            <input type="password" id="confirmPassword" placeholder="Confirm New Password">
+            <button id="changePasswordBtn">Change Password</button>
+        </div>
+    </div>
+</div>
+<hr>
+<div class="settings-section">
+    <h3>Signature</h3>
+    <p>Upload a signature image (.png, .jpg) to be placed at the bottom of all PDF reports.</p>
+    <div class="signature-preview">
+        <img id="signaturePreview" src="" alt="Signature Preview" style="display: none; max-width: 200px; border: 1px solid var(--color-border); padding: 5px; border-radius: 5px;">
+        <p id="noSignatureText">No signature has been uploaded.</p>
+    </div>
+    <div class="button-wrapper">
+        <button id="removeSignatureBtn" class="logout-button" style="display: none;">Remove Signature</button>
+        <button id="uploadSignatureBtn" class="import-button">Upload Signature</button>
+    </div>
+</div>
+<footer>
+    <p style="text-align: center; color: var(--color-text-secondary); font-size: 14px;">
+        Developed by Vaibhav MS<br>
+        Department of Information Science and Engineering
+    </p>
+</footer>

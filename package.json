@@ -1,0 +1,38 @@
+{
+  "name": "lams",
+  "version": "1.0.0",
+  "description": "A desktop app to track lab attendance.",
+  "main": "Backend/main.js",
+  "scripts": {
+    "start": "electron .",
+    "package": "electron-builder"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^31.0.1",
+    "electron-builder": "^26.0.12"
+  },
+  "dependencies": {
+    "jspdf": "^3.0.2",
+    "jspdf-autotable": "^5.0.2",
+    "sqlite3": "^5.1.7",
+    "xlsx": "^0.18.5"
+  },
+  "build": {
+    "appId": "com.vaibhavms.lams",
+    "productName": "LAMS",
+    "files": [
+      "Backend/",
+      "Frontend/",
+      "data/",
+      "node_modules/",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico"
+    }
+  }
+}

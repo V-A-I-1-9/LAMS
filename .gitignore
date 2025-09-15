@@ -1,0 +1,12 @@
+# Dependencies
+/node_modules
+
+# Build files
+/dist
+
+# User data
+/data
+
+# Log and temp files
+*.log
+.DS_Store

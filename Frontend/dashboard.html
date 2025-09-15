@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - LAMS</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+    <div id="notification-container"></div>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="assets/images/logo.png" alt="College Logo" class="sidebar-logo">
+                <h3>Dashboard</h3>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item" data-view="home">Home</a>
+                <a href="#" class="nav-item" data-view="take-attendance">Take Attendance</a>
+                <a href="#" class="nav-item" data-view="manage-classes">Manage Students</a>
+                <a href="#" class="nav-item" data-view="generate-reports">Generate Reports</a>
+                <a href="#" class="nav-item" data-view="settings">Settings</a>
+            </nav>
+            <div class="sidebar-footer">
+                <button id="logoutBtn" class="logout-button">Logout</button>
+            </div>
+        </aside>
+
+        <main class="main-content"></main>
+    </div>
+
+    <script src="../node_modules/jspdf/dist/jspdf.umd.min.js"></script>
+    <script src="../node_modules/jspdf-autotable/dist/jspdf.plugin.autotable.min.js"></script>
+
+    <script src="dashboard.js" type="module" defer></script>
+</body>
+
+</html>

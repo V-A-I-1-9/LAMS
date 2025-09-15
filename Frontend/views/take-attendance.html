@@ -1,0 +1,24 @@
+<div class="view-container">
+    <h2>Take Attendance</h2>
+
+    <div class="selection-container">
+        <select id="deptSelect">
+            <option value="">-- Select Department --</option>
+        </select>
+        <select id="sectionSelect" disabled>
+            <option value="">-- Select Section --</option>
+        </select>
+        <select id="subjectSelect" disabled>
+            <option value="">-- Select Subject --</option>
+        </select>
+        <input type="date" id="attendanceDate">
+        <button id="loadStudentsBtn" disabled>Load Students</button>
+    </div>
+
+    <div id="studentListContainer" class="list-container" style="display: none;">
+        <h3>Mark Absentees</h3>
+        <ul id="studentChecklist">
+        </ul>
+        <button id="saveAttendanceBtn" class="import-button">Save Attendance</button>
+    </div>
+</div>

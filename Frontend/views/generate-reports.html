@@ -1,0 +1,42 @@
+<div class="view-container">
+    <h2>Generate Reports</h2>
+
+    <div class="report-section">
+        <h3>Daily Attendance Report</h3>
+        <p>Generates a list of present and absent students for a specific day and subject.</p>
+        <div class="selection-container">
+            <select id="dailyDeptSelect">
+                <option value="">-- Select Department --</option>
+            </select>
+            <select id="dailySectionSelect" disabled>
+                <option value="">-- Select Section --</option>
+            </select>
+            <select id="dailySubjectSelect" disabled> <option value="">-- Select Subject --</option>
+            </select>
+            <input type="date" id="dailyDate">
+            <button id="generateDailyReportBtn" class="import-button">Generate PDF</button>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="report-section">
+        <h3>Attendance Shortage List</h3>
+        <p>Generates a list of students with low attendance for a specific subject.</p>
+        <div class="selection-container">
+            <select id="shortageDeptSelect">
+                <option value="">-- Select Department --</option>
+            </select>
+            <select id="shortageSectionSelect" disabled>
+                <option value="">-- Select Section --</option>
+            </select>
+            <select id="shortageSubjectSelect" disabled> <option value="">-- Select Subject --</option>
+            </select>
+            <div class="date-range">
+                <label>From:</label> <input type="date" id="startDate">
+                <label>To:</label> <input type="date" id="endDate">
+            </div>
+            <button id="generateShortageReportBtn" class="import-button">Generate PDF</button>
+        </div>
+    </div>
+</div>

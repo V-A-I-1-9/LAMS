@@ -1,0 +1,45 @@
+<div class="view-container-grid">
+    <div class="column">
+        <h2>Departments & Sections</h2>
+        <div class="form-container">
+            <input type="text" id="departmentName" placeholder="Enter department name">
+            <button id="addDepartmentBtn">Add Department</button>
+        </div>
+        <ul id="departmentList" class="list-container"></ul>
+        <div id="sectionsContainer" style="display: none;">
+            <hr>
+            <h3>Sections for <span id="selectedDeptName"></span></h3>
+            <div class="form-container">
+                <input type="number" id="semester" placeholder="Semester">
+                <input type="text" id="sectionName" placeholder="Section">
+                <button id="addSectionBtn">Add Section</button>
+            </div>
+            <ul id="sectionList" class="list-container"></ul>
+        </div>
+    </div>
+
+    <div class="column" id="detailsColumn" style="display: none;">
+        <h2>Details for <span id="selectedSectionName"></span></h2>
+        
+        <div class="detail-subsection">
+            <h4>Manage Subjects</h4>
+            <div class="form-container">
+                <input type="text" id="subjectCode" placeholder="Subject Code">
+                <input type="text" id="subjectName" placeholder="Subject Name">
+                <button id="addSubjectBtn">Add Subject</button>
+            </div>
+            <ul id="subjectList" class="list-container"></ul>
+        </div>
+        <hr>
+        <div class="detail-subsection">
+            <h4>Manage Students</h4>
+            <div class="form-container">
+                <input type="text" id="studentUsn" placeholder="Student USN">
+                <input type="text" id="studentName" placeholder="Student Name">
+                <button id="addStudentBtn">Add Student</button>
+            </div>
+            <button id="importStudentsBtn" class="import-button">Import from Excel</button>
+            <ul id="studentList" class="list-container"></ul>
+        </div>
+    </div>
+</div>
