@@ -287,54 +287,54 @@ ipcMain.handle('get-attendance-summary', async (event, { sectionId, subjectId, s
 
 // --- NEW HANDLERS ---
 
-// Backup DB
+// Backup Database
 ipcMain.handle('backup-database', async () => {
-  const dbPath = path.resolve(app.getAppPath(), 'data', 'attendance.db');
-  const result = await dialog.showSaveDialog({
-    title: 'Save Database Backup',
-    defaultPath: `attendance-backup-${new Date().toISOString().slice(0, 10)}.db`,
-    filters: [{ name: 'Database Files', extensions: ['db'] }]
-  });
+    // The 'dbPath' variable is already correctly defined at the top of your main.js file.
+    // We just need to use it here.
+    const result = await dialog.showSaveDialog({
+        title: 'Save Database Backup',
+        defaultPath: `LAMS-backup-${new Date().toISOString().slice(0, 10)}.db`,
+        filters: [{ name: 'Database Files', extensions: ['db'] }]
+    });
 
-  if (!result.canceled && result.filePath) {
-    try {
-      fs.copyFileSync(dbPath, result.filePath);
-      return { success: true, message: `Backup saved to ${result.filePath}` };
-    } catch (error) {
-      return { success: false, message: error.message };
+    if (!result.canceled && result.filePath) {
+        try {
+            fs.copyFileSync(dbPath, result.filePath);
+            return { success: true, message: `Backup saved to ${result.filePath}` };
+        } catch (error) {
+            return { success: false, message: error.message };
+        }
     }
-  }
-  return { success: false, message: 'Backup canceled.' };
+    return { success: false, message: 'Backup canceled.' };
 });
 
-// Restore DB
+// Restore Database
 ipcMain.handle('restore-database', async () => {
-  const dbPath = path.resolve(app.getAppPath(), 'data', 'attendance.db');
-  const result = await dialog.showOpenDialog({
-    title: 'Select Backup to Restore',
-    properties: ['openFile'],
-    filters: [{ name: 'Database Files', extensions: ['db'] }]
-  });
-
-  if (!result.canceled && result.filePaths.length > 0) {
-    const backupPath = result.filePaths[0];
-    return new Promise(resolve => {
-      database.closeDb((err) => {
-        if (err) return resolve({ success: false, message: err.message });
-
-        try {
-          fs.copyFileSync(backupPath, dbPath);
-          resolve({ success: true });
-          app.relaunch();
-          app.quit();
-        } catch (error) {
-          database.connectDb(); // Reconnect if restore failed
-          resolve({ success: false, message: error.message });
-        }
-      });
+    // The 'dbPath' variable is also used here.
+    const result = await dialog.showOpenDialog({
+        title: 'Select Backup to Restore',
+        properties: ['openFile'],
+        filters: [{ name: 'Database Files', extensions: ['db'] }]
     });
-  }
-  return { success: false, message: 'Restore canceled.' };
+
+    if (!result.canceled && result.filePaths.length > 0) {
+        const backupPath = result.filePaths[0];
+        return new Promise(resolve => {
+            database.closeDb((err) => {
+                if (err) return resolve({ success: false, message: err.message });
+                try {
+                    fs.copyFileSync(backupPath, dbPath);
+                    resolve({ success: true });
+                    app.relaunch();
+                    app.quit();
+                } catch (error) {
+                    database.connect(dbPath); // Reconnect if restore failed
+                    resolve({ success: false, message: error.message });
+                }
+            });
+        });
+    }
+    return { success: false, message: 'Restore canceled.' };
 });
 
 // Change Password
