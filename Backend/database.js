@@ -62,7 +62,7 @@ function initializeDb() {
                     if (err) {
                         console.error("Error checking for default user", err);
                     } else if (!row) {
-                        const defaultPassword = 'Test@123';
+                        const defaultPassword = 'admin@123';
                         const hashedPassword = hashPassword(defaultPassword);
                         db.run("INSERT INTO users (username, password) VALUES (?, ?)", [defaultUsername, hashedPassword], (err) => {
                             if (err) {

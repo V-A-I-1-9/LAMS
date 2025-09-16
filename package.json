@@ -26,13 +26,16 @@
     "files": [
       "Backend/",
       "Frontend/",
-      "data/",
       "node_modules/",
       "package.json"
     ],
     "win": {
       "target": "nsis",
       "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
     }
   }
 }
