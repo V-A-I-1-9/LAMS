@@ -343,12 +343,14 @@ ipcMain.handle('change-password', async (event, { currentPassword, newPassword }
   const hashedCurrent = database.hashPassword(currentPassword);
 
   return new Promise((resolve) => {
-    db.get("SELECT * FROM users WHERE username = 'attender' AND password = ?", [hashedCurrent], (err, row) => {
+    // FIX: Check for the correct username 'admin' instead of 'attender'
+    db.get("SELECT * FROM users WHERE username = 'admin' AND password = ?", [hashedCurrent], (err, row) => {
       if (err) return resolve({ success: false, message: err.message });
       if (!row) return resolve({ success: false, message: "Current password does not match." });
 
       const hashedNew = database.hashPassword(newPassword);
-      db.run("UPDATE users SET password = ? WHERE username = 'attender'", [hashedNew], (updateErr) => {
+      // FIX: Update the password for the correct username 'admin'
+      db.run("UPDATE users SET password = ? WHERE username = 'admin'", [hashedNew], (updateErr) => {
         if (updateErr) return resolve({ success: false, message: updateErr.message });
         resolve({ success: true, message: "Password updated successfully." });
       });
