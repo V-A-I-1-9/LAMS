@@ -1,8 +1,15 @@
 const { app, BrowserWindow, ipcMain, dialog } = require('electron');
-const fs = require('fs');
 const path = require('path');
-const xlsx = require('xlsx');
-const database = require('./database.js'); // Updated: import full module
+const fs = require('fs');
+const xlsx = require('xlsx'); // Make sure this is here if you need it at the top
+const database = require('./database.js');
+
+// Get the correct, writable path for user data
+const userDataPath = app.getPath('userData');
+// Define the full path for our database file
+const dbPath = path.join(userDataPath, 'attendance.db');
+// Tell our database module to connect to this specific path
+database.connect(dbPath);
 
 let mainWindow;
 
@@ -405,5 +412,8 @@ app.whenReady().then(() => {
 });
 
 app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') app.quit();
+    database.closeDb();
+    if (process.platform !== 'darwin') {
+        app.quit();
+    }
 });

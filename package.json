@@ -1,6 +1,6 @@
 {
   "name": "lams",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A desktop app to track lab attendance.",
   "main": "Backend/main.js",
   "scripts": {
